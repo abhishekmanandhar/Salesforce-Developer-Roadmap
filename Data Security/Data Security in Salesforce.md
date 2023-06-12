@@ -9,7 +9,7 @@ Salesforce offers a versatile sharing model that allows for assigning different 
 Salesforce provides configurable security controls to determine user privileges for viewing, creating, editing, or deleting records and fields. Access can be configured at various levels such as organization-wide, object-level, field-level, or even at the individual record level. This flexible combination of security controls allows for efficient management of data access for a large number of users without the need for individual permission settings.
 
 ### Levels of Data Access
-#### Organization Level Security
+#### 1. Organization Level Security
 At the highest level, you can secure access to your organization by maintaining a list of authorized users, setting password policies, and limiting login access to certain hours and certain locations.
 
 * **Maintain a list of authorized users:** At the organization level, Salesforce administrators can maintain a centralized list of authorized users. This ensures that only approved individuals have access to the Salesforce org. User management controls allow administrators to create, deactivate, and delete user accounts as needed, ensuring that only authorized personnel have access to the organization's data.
@@ -19,9 +19,18 @@ At the highest level, you can secure access to your organization by maintaining 
 ![Login IP](https://github.com/abhishekmanandhar/Salesforce-Developer-Roadmap/blob/main/Data%20Security/images/login%20IP.png)
 ![Login Hours](https://github.com/abhishekmanandhar/Salesforce-Developer-Roadmap/blob/main/Data%20Security/images/login%20hours.png)
 
-#### Object Level Security
+#### 2. Object Level Security
 Object-level security in Salesforce refers to the controls and permissions set at the level of individual objects or entities within the Salesforce platform. It determines what actions users can perform on specific objects, such as viewing, creating, editing, or deleting records. You can control object permissions using profiles and permission sets.
 
 Profiles are a collection of settings and permissions that define the actions users can perform on objects and their associated records. Each profile is assigned to one or more users and governs their access to objects. With profiles, you can control object-level permissions, including read, create, edit, and delete access, for different sets of users.
+
+Example:
+Here, there are two users, Abhishek Manandhar and Abhi Manandhar. The profile assigned to Abhishek Manandhar is System Administrator who sets the My User Profile assigned to Abhi Manandhar to not have edit and delete access. That's why Abhi Manandhar isn't able to edit and delete a particular record as shown in the diagrams below.
+
+![All Users](https://github.com/abhishekmanandhar/Salesforce-Developer-Roadmap/blob/main/Data%20Security/images/All%20users.png)
+
+![Abhishek Manandhar System Administrator Profile](https://github.com/abhishekmanandhar/Salesforce-Developer-Roadmap/blob/main/Data%20Security/images/Abhishek%20Manandhar%20System%20Administrator%20Profile.png)
+
+![Abhi Manandhar My User Profile](https://github.com/abhishekmanandhar/Salesforce-Developer-Roadmap/blob/main/Data%20Security/images/Abhi%20Manandhar%20My%20User%20Profile.png)
 
 Permission sets are used to extend or override the permissions granted by profiles. They allow for more granular control by providing additional permissions to specific users or groups. Permission sets can be assigned to users in addition to their profile, granting them access to specific objects or features not available in their profile.
