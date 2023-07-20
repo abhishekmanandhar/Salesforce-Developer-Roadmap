@@ -1,0 +1,18 @@
+<template>
+    <lightning-card class="slds-var-m-bottom_medium">
+        <c-p2c-child
+        name = {name}
+        title = {title}
+        number = {number}
+        is-valid = {isValid}
+        carousal-details = {carousalDetails}
+        ></c-p2c-child>
+    </lightning-card>
+
+    <lightning-card>
+        <lightning-input type="number" name="input1" label="Enter a number" value={progressValue} onkeyup={handleChange}></lightning-input>
+        <c-p2c-progress-bar-child
+        progress-value = {progressValue}
+        ></c-p2c-progress-bar-child>
+    </lightning-card>
+</template>
