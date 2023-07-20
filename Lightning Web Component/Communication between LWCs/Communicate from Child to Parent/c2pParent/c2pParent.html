@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Child to Parent">
+        <lightning-button label="Show Modal"  onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+        <p>{message}</p>
+        <template if:true={showModal}>
+            <c-c2p-child
+            onclose={handleClose}
+            ></c-c2p-child>
+        </template>
+    </lightning-card>
+</template>
