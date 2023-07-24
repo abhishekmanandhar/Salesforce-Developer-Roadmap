@@ -44,8 +44,6 @@ public with sharing class MaintenanceRequestHelper {
                 //shortest due date based on maintenance cycle of equipment
                 If (maintenanceCycles.containskey(c.Id)){
                     nc.Date_Due__c = Date.today().addDays((Integer) maintenanceCycles.get(c.Id));
-                } else {
-                    nc.Date_Due__c = Date.today().addDays((Integer) c.Equipment__r.maintenance_Cycle__c);
                 }
                 
                 newCases.add(nc);
