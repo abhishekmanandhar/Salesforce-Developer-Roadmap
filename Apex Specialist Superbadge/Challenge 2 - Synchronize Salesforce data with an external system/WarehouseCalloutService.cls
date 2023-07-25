@@ -1,4 +1,4 @@
-public with sharing class WarehouseCalloutService implements Queueable {
+public with sharing class WarehouseCalloutService{
     private static final String WAREHOUSE_URL = 'https://th-superbadge-apex.herokuapp.com/equipment';
 
     @future(callout=true)
@@ -20,12 +20,12 @@ public with sharing class WarehouseCalloutService implements Queueable {
                 Map<String,Object> mapJson = (Map<String,Object>)eq;
                 Product2 myEq = new Product2();
                 myEq.Replacement_Part__c = (Boolean) mapJson.get('replacement');
+                myEq.Current_Inventory__c = (Double) mapJson.get('quantity');
                 myEq.Name = (String) mapJson.get('name');
                 myEq.Maintenance_Cycle__c = (Integer) mapJson.get('maintenanceperiod');
                 myEq.Lifespan_Months__c = (Integer) mapJson.get('lifespan');
                 myEq.Cost__c = (Integer) mapJson.get('cost');
                 myEq.Warehouse_SKU__c = (String) mapJson.get('sku');
-                myEq.Current_Inventory__c = (Double) mapJson.get('quantity');
                 myEq.ProductCode = (String) mapJson.get('_id');
                 warehouseEq.add(myEq);
             }
@@ -35,9 +35,5 @@ public with sharing class WarehouseCalloutService implements Queueable {
                 System.debug('Your equipment was synced with the warehouse one');
             }
         }
-    }
-    
-    public static void execute (QueueableContext context){
-        runWarehouseEquipmentSync();
     }
 }
