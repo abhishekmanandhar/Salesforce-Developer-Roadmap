@@ -54,4 +54,18 @@ public with sharing class ApexCodingChallenges {
             Database.update(accToUpdate);
         }
     }
+
+    //Query Contact records created in last 90 days. Now update phone number of all contacts with phone number of associated account if the contacts phone is empty.
+    public static void scenarioFive(){
+        List<Contact> conToUpdate = new List<Contact>();
+        for(Contact con : [SELECT Id, Phone, Account.Phone FROM Contact WHERE CreatedDate = LAST_90_DAYS]){
+            if(con.Phone == null){
+                con.Phone = con.Account.Phone;
+                conToUpdate.add(con);
+            }
+        }
+        if(!conToUpdate.isEmpty()){
+            Database.update(conToUpdate);
+        }
+    }
 }
