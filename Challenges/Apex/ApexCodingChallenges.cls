@@ -68,4 +68,19 @@ public with sharing class ApexCodingChallenges {
             Database.update(conToUpdate);
         }
     }
+
+    //Create a Custome Object named "Employee". Create Salary Lookup (Account) fields on Employee OBject. Create a Total SAlary field on Account. Now Query Accounts Created this year along with related Employees. Populate total salary of all related Employees on Account.
+    public static void scenarioSix(){
+        List<Account> accToUpdate = new List<Account>();
+        for(Account acc : [SELECT Id, Total_Salary__c, (SELECT Id, Salary__c FROM Employees__r) FROM Account WHERE CreatedDate = THIS_YEAR]){
+            acc.Total_Salary__c = 0;
+            for(Employee__c emp : acc.Employees__r){
+                acc.Total_Salary__c += emp.Salary__c;
+            }
+            accToUpdate.add(acc);
+        }
+        if(!accToUpdate.isEmpty()){
+            Database.update(accToUpdate);
+        }
+    }
 }
