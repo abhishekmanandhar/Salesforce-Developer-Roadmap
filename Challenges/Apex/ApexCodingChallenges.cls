@@ -1,4 +1,5 @@
 public with sharing class ApexCodingChallenges {
+    //Query Account records created in last 90 days. Now Insert one opportunity record for each account.
     public static void scenarioOne(){
         List<Opportunity> oppToInsert = new List<Opportunity>();
         for( Account acc : [SELECT Id, Name FROM Account WHERE CreatedDate = LAST_90_DAYS]){
@@ -9,6 +10,7 @@ public with sharing class ApexCodingChallenges {
         }
     }
     
+    //Query Account records created in last 90 days. Now update phone number of all accounts with '1234567890' value.
     public static void scenarioTwo(){
         List<Account> accToUpdate = new List<Account>();
         for(Account acc : [SELECT Id, Phone FROM Account WHERE CreatedDate = LAST_90_DAYS]){
@@ -20,6 +22,7 @@ public with sharing class ApexCodingChallenges {
         }
     }
     
+    //Query Opportunity records created in last 90 days. Now update description of all opportunities with 'Opportunity is Closed Won' if stage is 'Closed Won' and 'Opportunity is Closed Lost' if stage is 'Closed Lost'.
     public static void scenarioThree(){
         List<Opportunity> oppToUpdate = new List<Opportunity>();
         for(Opportunity opp : [SELECT Id, StageName, Description FROM Opportunity WHERE CreatedDate = LAST_90_DAYS]){
@@ -35,6 +38,7 @@ public with sharing class ApexCodingChallenges {
         }
     }
     
+    //Query Account records created in last 90 days. Now update Total_Contacts__c field of all accounts with count of contacts associated with that account.
     public static void scenarioFour(){
         Integer count = 0;
         List<Account> accToUpdate = new List<Account>();
