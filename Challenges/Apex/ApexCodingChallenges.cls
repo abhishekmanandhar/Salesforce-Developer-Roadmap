@@ -83,4 +83,18 @@ public with sharing class ApexCodingChallenges {
             Database.update(accToUpdate);
         }
     }
+
+    //Query Employees created this week and if Phone is not populated on Employee record then copy Phone of Related Account.
+    public static void scenarioSeven(){
+        List<Employee__c> empToUpdate = new List<Employee__c>();
+        for(Employee__c emp : [SELECT Id, Phone__c, Account__r.Phone FROM Employee__c WHERE CreatedDate = THIS_YEAR]){
+            if(emp.Phone__c == null){
+                emp.Phone__c = emp.Account__r.Phone;
+                empToUpdate.add(emp);
+            }
+        }
+        if(!empToUpdate.isEmpty()){
+            Database.update(empToUpdate, true);
+        }
+    }
 }
