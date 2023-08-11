@@ -46,4 +46,20 @@ public class AccountTriggerHandler {
             Database.update(oppToUpdate);
         }
     }
+    
+    public static void updateRating(List<Account> newAccList){
+        for(Account acc : newAccList){
+            if(acc.Industry == null){
+                //public void addError(String fieldName, String errorMsg)
+                acc.addError('Industry', 'Industry field should not be left blank.');
+            }else if(acc.Industry != null && acc.Industry == 'Media'){
+                acc.Rating = 'Hot';
+            } else {
+                acc.Rating = 'Cold';
+            }
+        }
+    }
+    
+
+   	
 }
