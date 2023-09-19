@@ -14,7 +14,7 @@ trigger AccountTrigger on Account (before insert, after insert, before update, a
             AccountTriggerHandler.updateAccountDesc(Trigger.New, Trigger.oldMap);
         }
         if(Trigger.IsAfter){
-			AccountTriggerHandler.udpatePhoneofOpps(Trigger.New, Trigger.oldMap);
+            AccountTriggerHandler.udpatePhoneofOpps(Trigger.New, Trigger.oldMap);
         }
     }
 }
